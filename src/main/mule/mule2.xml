@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="mule2Flow" doc:id="b740af26-c545-4e88-b2c7-908ad156e9b5" >
 		<http:listener doc:name="Listener" doc:id="62751426-e30e-4535-bce3-6cd9be872e2d" config-ref="HTTP_Listener_config" path="/mule2"/>
-		<logger level="INFO" doc:name="Logger" doc:id="e06525ce-c94a-4224-a26b-7f2aac896d99" message='Flow Started'/>
+		<logger level="WARN" doc:name="Logger" doc:id="e06525ce-c94a-4224-a26b-7f2aac896d99" message='Flow Started'/>
 		<ee:transform doc:name="Transform Message" doc:id="2e5b1b5f-8a28-44a0-8144-63cfa6fd6966" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
