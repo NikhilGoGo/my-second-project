@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="1981cc04-d12c-485e-a832-edbd76d4f595">
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule2Flow" doc:id="b740af26-c545-4e88-b2c7-908ad156e9b5" >
+		<http:listener doc:name="Listener" doc:id="62751426-e30e-4535-bce3-6cd9be872e2d" config-ref="HTTP_Listener_config" path="/mule2"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e06525ce-c94a-4224-a26b-7f2aac896d99" message='Flow Started'/>
+		<ee:transform doc:name="Transform Message" doc:id="2e5b1b5f-8a28-44a0-8144-63cfa6fd6966" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"Message": "This is my Mule-2 project with logger components"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="623504e2-c0a2-47c7-98c1-b74ba67ffb60" message="Flow ended"/>
+	</flow>
+</mule>
